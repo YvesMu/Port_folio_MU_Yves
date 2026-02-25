@@ -9,6 +9,245 @@
     <title>MU Yves - Full-Stack Developer Portfolio</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-enhanced {
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 212, 255, 0.02) 100%);
+        }
+
+        .hero-enhanced::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .hero-enhanced::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content-enhanced {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ffffff 0%, #b0c4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInUp 0.8s ease-out 0.1s both;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            max-width: 650px;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .cta-buttons-enhanced {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: slideInUp 0.8s ease-out 0.3s both;
+        }
+
+        .btn-enhanced {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary-enhanced {
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-primary-enhanced:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.4);
+        }
+
+        .btn-secondary-enhanced {
+            background: transparent;
+            color: #00d4ff;
+            border: 2px solid #00d4ff;
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.1);
+        }
+
+        .btn-secondary-enhanced:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.2);
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-section-enhanced {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 212, 255, 0.02) 100%);
+        }
+
+        .about-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .about-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #0066ff, #00d4ff, transparent);
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #b0c4ff;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #0066ff, #00d4ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.1);
+            transform: translateY(-8px);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            color: #a0b0db;
+            line-height: 1.6;
+        }
+
+        .about-cta {
+            text-align: center;
+            margin-top: 3rem;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -30,54 +269,57 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero-enhanced">
         <div class="container">
-            <div class="hero-content">
-                <h1 style="font-size: 4rem; margin-bottom: 1rem; line-height: 1.1;">Yves Mu</h1>
-                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; background: linear-gradient(135deg, #0066ff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Ingénieur Web Full-Stack</h2>
-                <p style="font-size: 1.2rem; opacity: 0.9; max-width: 600px; line-height: 1.8; margin-bottom: 2rem;">
+            <div class="hero-content-enhanced">
+                <h1 class="hero-title">Yves Mu</h1>
+                <h2 class="hero-subtitle">Ingénieur Web Full-Stack</h2>
+                <p class="hero-description">
                     Diplômé ESGI 2025. Spécialisé en développement full-stack, SEO et optimisation web.
                     Expérience en télécoms et PME. Autonome, polyvalent et orienté performance.
                 </p>
-                <div class="cta-buttons">
-                    <a href="projects.html" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Voir mes projets</a>
-                    <a href="contact.html" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Me contacter</a>
+                <div class="cta-buttons-enhanced">
+                    <a href="projects.html" class="btn-enhanced btn-primary-enhanced">Voir mes projets</a>
+                    <a href="contact.html" class="btn-enhanced btn-secondary-enhanced">Me contacter</a>
                 </div>
-            </div>
-            <div class="hero-image">
-                <div class="animated-box"></div>
             </div>
         </div>
     </section>
 
     <!-- About Preview Section -->
-    <section style="background: rgba(0, 102, 255, 0.05);">
+    <section class="about-section-enhanced">
         <div class="container">
-            <h2>À propos</h2>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+            <h2 class="about-title">À propos</h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <p class="about-description">
                     Je suis un développeur passionné avec plusieurs années d'expérience en développement web full-stack. 
                     Mon objectif est de créer des applications web modernes, performantes et scalables qui résolvent des problèmes réels.
                 </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                    <div class="card">
-                        <i class="fas fa-code" style="font-size: 2rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;"></i>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
                         <h3>Clean Code</h3>
-                        <p>Code maintenable et bien structuré</p>
+                        <p>Code maintenable et bien structuré, suivant les meilleures pratiques et standards industriels.</p>
                     </div>
-                    <div class="card">
-                        <i class="fas fa-mobile-alt" style="font-size: 2rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
                         <h3>Responsive</h3>
-                        <p>Adapté à tous les appareils</p>
+                        <p>Interface adaptée à tous les appareils for une expérience utilisateur optimale.</p>
                     </div>
-                    <div class="card">
-                        <i class="fas fa-rocket" style="font-size: 2rem; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;"></i>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
                         <h3>Performance</h3>
-                        <p>Optimisé et rapide</p>
+                        <p>Applications optimisées pour la vitesse et l'efficacité maximale.</p>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 2rem;">
-                    <a href="about.html" class="btn btn-primary">En savoir plus</a>
+                <div class="about-cta">
+                    <a href="about.html" class="btn-enhanced btn-primary-enhanced">En savoir plus sur moi</a>
                 </div>
             </div>
         </div>
