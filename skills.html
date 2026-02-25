@@ -7,6 +7,90 @@
     <title>Compétences - MU Yves Portfolio</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .skill-card-enhanced {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #0066ff, #00d4ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .skill-card-enhanced:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .skill-card-enhanced:hover::before {
+            opacity: 1;
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .skill-tag-enhanced {
+            background: rgba(0, 212, 255, 0.1);
+            color: #00d4ff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .skill-tag-enhanced:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            margin: 4rem 0 3rem 0;
+            text-align: center;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #0066ff, #00d4ff, transparent);
+        }
+        
+        .section-title span {
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -30,192 +114,236 @@
     <!-- Page Header -->
     <section style="padding: 4rem 0; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);">
         <div class="container">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">Compétences Techniques</h1>
-            <p style="font-size: 1.2rem; text-align: center; max-width: 700px; margin: 0 auto;">Maîtrises et expertises technologiques</p>
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; text-align: center; background: linear-gradient(135deg, #0066ff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Compétences Techniques</h1>
+            <p style="font-size: 1.2rem; text-align: center; max-width: 700px; margin: 0 auto; color: #b0c4ff;">Maîtrises et expertises technologiques</p>
         </div>
     </section>
 
     <!-- Skills -->
-    <section>
+    <section style="padding: 4rem 0;">
         <div class="container">
-            <!-- Frontend -->
-            <h2 style="margin-bottom: 2rem;">Langages de Programmation</h2>
+            <!-- Langages & Technologies -->
+            <h2 class="section-title"><span>Langages & Technologies</span></h2>
             <div class="grid grid-3">
-                <div class="skill-card">
-                    <h3>JavaScript / TypeScript</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">ES6+</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Vue.js</span>
-                        <span class="skill-tag">Node.js</span>
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="color: #f7df1e;">
+                        <i class="fab fa-js-square"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">JavaScript / TypeScript</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">ES6+</span>
+                        <span class="skill-tag-enhanced">React</span>
+                        <span class="skill-tag-enhanced">Vue.js</span>
+                        <span class="skill-tag-enhanced">Node.js</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <h3>PHP & Backend</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">WordPress</span>
-                        <span class="skill-tag">Odoo</span>
-                        <span class="skill-tag">NestJS</span>
+
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #777bb4, #564d4d); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">PHP & Backend</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">PHP</span>
+                        <span class="skill-tag-enhanced">WordPress</span>
+                        <span class="skill-tag-enhanced">Odoo</span>
+                        <span class="skill-tag-enhanced">NestJS</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <h3>Web Standards</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">Responsive</span>
-                        <span class="skill-tag">SEO</span>
+
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="color: #e34c26;">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">Web Standards</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">HTML5</span>
+                        <span class="skill-tag-enhanced">CSS3</span>
+                        <span class="skill-tag-enhanced">Responsive</span>
+                        <span class="skill-tag-enhanced">SEO</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Frontend -->
-            <h2 style="margin-top: 3rem; margin-bottom: 2rem;">Frameworks Frontend</h2>
+            <!-- Frameworks Frontend -->
+            <h2 class="section-title"><span>Frameworks Frontend</span></h2>
             <div class="grid grid-3">
-                <div class="skill-card">
-                    <h3>React</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">React Hooks</span>
-                        <span class="skill-tag">Redux</span>
-                        <span class="skill-tag">Context API</span>
-                        <span class="skill-tag">SPAs</span>
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="color: #61dafb;">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">React</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">React Hooks</span>
+                        <span class="skill-tag-enhanced">Redux</span>
+                        <span class="skill-tag-enhanced">Context API</span>
+                        <span class="skill-tag-enhanced">SPAs</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <h3>Next.js</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">SSR/SSG</span>
-                        <span class="skill-tag">API Routes</span>
-                        <span class="skill-tag">Deployment</span>
-                        <span class="skill-tag">Performance</span>
+
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="color: #fff200;">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">Next.js</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">SSR/SSG</span>
+                        <span class="skill-tag-enhanced">API Routes</span>
+                        <span class="skill-tag-enhanced">Deployment</span>
+                        <span class="skill-tag-enhanced">Performance</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <h3>Vue.js</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Vue 3</span>
-                        <span class="skill-tag">Composition API</span>
-                        <span class="skill-tag">Vuex/Pinia</span>
-                        <span class="skill-tag">Components</span>
+
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="color: #4fc08d;">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">Vue.js</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">Vue 3</span>
+                        <span class="skill-tag-enhanced">Composition API</span>
+                        <span class="skill-tag-enhanced">Vuex/Pinia</span>
+                        <span class="skill-tag-enhanced">Components</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Databases & Tools -->
-            <h2 style="margin-top: 3rem; margin-bottom: 2rem;">Bases de Données & CMS</h2>
+            <!-- Databases & CMS -->
+            <h2 class="section-title"><span>Bases de Données & CMS</span></h2>
             <div class="grid grid-3">
-                <div class="skill-card">
-                    <h3>Databases</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">Optimisation</span>
-                        <span class="skill-tag">SQL</span>
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #336791, #3fa9f5); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">Databases</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">PostgreSQL</span>
+                        <span class="skill-tag-enhanced">MySQL</span>
+                        <span class="skill-tag-enhanced">Optimisation</span>
+                        <span class="skill-tag-enhanced">SQL</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <h3>CMS & Outils</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">WordPress</span>
-                        <span class="skill-tag">Odoo</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">GitHub</span>
+
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="color: #0073aa;">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">CMS & Outils</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">WordPress</span>
+                        <span class="skill-tag-enhanced">Odoo</span>
+                        <span class="skill-tag-enhanced">Git</span>
+                        <span class="skill-tag-enhanced">GitHub</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <h3>Mobile & Plus</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Flutter</span>
-                        <span class="skill-tag">Dart</span>
-                        <span class="skill-tag">Unity</span>
-                        <span class="skill-tag">C#</span>
+
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="color: #3fb5d0;">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">Mobile & 3D</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">Flutter</span>
+                        <span class="skill-tag-enhanced">Dart</span>
+                        <span class="skill-tag-enhanced">Unity</span>
+                        <span class="skill-tag-enhanced">Blender</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Marketing & Other Skills -->
-            <h2 style="margin-top: 3rem; margin-bottom: 2rem;">Marketing Digital & SEO</h2>
+            <!-- Marketing & SEO -->
+            <h2 class="section-title"><span>Marketing Digital & Spécialités</span></h2>
             <div class="grid grid-3">
-                <div class="skill-card">
-                    <h3>SEO & Analytics</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">SEO Technique</span>
-                        <span class="skill-tag">Google Analytics</span>
-                        <span class="skill-tag">GTM</span>
-                        <span class="skill-tag">Optimisation</span>
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #4285f4, #1f5fbf); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">SEO & Analytics</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">SEO Technique</span>
+                        <span class="skill-tag-enhanced">Google Analytics</span>
+                        <span class="skill-tag-enhanced">GTM</span>
+                        <span class="skill-tag-enhanced">Optimisation</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <h3>Campagnes & Contenu</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Google Ads</span>
-                        <span class="skill-tag">Landing Pages</span>
-                        <span class="skill-tag">Conversion</span>
-                        <span class="skill-tag">Blog</span>
+
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #ea4335, #ff6d6d); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">Campagnes & Contenu</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">Google Ads</span>
+                        <span class="skill-tag-enhanced">Landing Pages</span>
+                        <span class="skill-tag-enhanced">Conversion</span>
+                        <span class="skill-tag-enhanced">Blog</span>
                     </div>
                 </div>
-                <div class="skill-card">
-                    <h3>3D & Design</h3>
-                    <div class="skill-list">
-                        <span class="skill-tag">Blender</span>
-                        <span class="skill-tag">Modélisation 3D</span>
-                        <span class="skill-tag">UI/UX</span>
-                        <span class="skill-tag">Design</span>
+
+                <div class="skill-card-enhanced">
+                    <div class="skill-icon" style="background: linear-gradient(135deg, #ff9100, #fbc02d); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 style="margin-top: 0; margin-bottom: 1.5rem;">3D & Design</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                        <span class="skill-tag-enhanced">Blender</span>
+                        <span class="skill-tag-enhanced">Modélisation 3D</span>
+                        <span class="skill-tag-enhanced">UI/UX</span>
+                        <span class="skill-tag-enhanced">Design</span>
                     </div>
                 </div>
             </div>
 
             <!-- Proficiency Level -->
-            <h2 style="margin-top: 3rem;">Niveaux de Compétence</h2>
-            <div style="max-width: 600px; margin: 2rem auto;">
-                <div style="margin-bottom: 2rem;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span style="font-weight: 600;">JavaScript / React / Next.js</span>
-                        <span style="color: var(--secondary-color);">Expert</span>
+            <h2 class="section-title"><span>Niveaux de Compétence</span></h2>
+            <div style="max-width: 700px; margin: 3rem auto;">
+                <div style="margin-bottom: 2.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 212, 255, 0.02)); border-radius: 10px; border-left: 3px solid #0066ff;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
+                        <span style="font-weight: 600; color: #ffffff;">JavaScript / React / Next.js</span>
+                        <span style="color: #00d4ff; font-weight: 600;">Expert</span>
                     </div>
-                    <div style="width: 100%; height: 8px; background: var(--card-bg); border-radius: 10px; overflow: hidden;">
-                        <div style="width: 95%; height: 100%; background: var(--gradient);"></div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom: 2rem;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span style="font-weight: 600;">PHP / WordPress / Odoo</span>
-                        <span style="color: var(--secondary-color);">Avancé</span>
-                    </div>
-                    <div style="width: 100%; height: 8px; background: var(--card-bg); border-radius: 10px; overflow: hidden;">
-                        <div style="width: 90%; height: 100%; background: var(--gradient);"></div>
+                    <div style="width: 100%; height: 10px; background: rgba(0, 212, 255, 0.1); border-radius: 10px; overflow: hidden;">
+                        <div style="width: 95%; height: 100%; background: linear-gradient(90deg, #0066ff, #00d4ff); border-radius: 10px; transition: width 0.3s ease;"></div>
                     </div>
                 </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span style="font-weight: 600;">Bases de Données (PostgreSQL, MySQL)</span>
-                        <span style="color: var(--secondary-color);">Avancé</span>
+                <div style="margin-bottom: 2.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 212, 255, 0.02)); border-radius: 10px; border-left: 3px solid #0066ff;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
+                        <span style="font-weight: 600; color: #ffffff;">PHP / WordPress / Odoo</span>
+                        <span style="color: #00d4ff; font-weight: 600;">Avancé</span>
                     </div>
-                    <div style="width: 100%; height: 8px; background: var(--card-bg); border-radius: 10px; overflow: hidden;">
-                        <div style="width: 85%; height: 100%; background: var(--gradient);"></div>
-                    </div>
-                </div>
-
-                <div style="margin-bottom: 2rem;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span style="font-weight: 600;">SEO & Marketing Digital</span>
-                        <span style="color: var(--secondary-color);">Avancé</span>
-                    </div>
-                    <div style="width: 100%; height: 8px; background: var(--card-bg); border-radius: 10px; overflow: hidden;">
-                        <div style="width: 85%; height: 100%; background: var(--gradient);"></div>
+                    <div style="width: 100%; height: 10px; background: rgba(0, 212, 255, 0.1); border-radius: 10px; overflow: hidden;">
+                        <div style="width: 90%; height: 100%; background: linear-gradient(90deg, #0066ff, #00d4ff); border-radius: 10px; transition: width 0.3s ease;"></div>
                     </div>
                 </div>
 
-                <div>
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                        <span style="font-weight: 600;">Flutter / Mobile Development</span>
-                        <span style="color: var(--secondary-color);">Intermédiaire</span>
+                <div style="margin-bottom: 2.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 212, 255, 0.02)); border-radius: 10px; border-left: 3px solid #0066ff;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
+                        <span style="font-weight: 600; color: #ffffff;">Bases de Données (PostgreSQL, MySQL)</span>
+                        <span style="color: #00d4ff; font-weight: 600;">Avancé</span>
                     </div>
-                    <div style="width: 100%; height: 8px; background: var(--card-bg); border-radius: 10px; overflow: hidden;">
-                        <div style="width: 70%; height: 100%; background: var(--gradient);"></div>
+                    <div style="width: 100%; height: 10px; background: rgba(0, 212, 255, 0.1); border-radius: 10px; overflow: hidden;">
+                        <div style="width: 85%; height: 100%; background: linear-gradient(90deg, #0066ff, #00d4ff); border-radius: 10px; transition: width 0.3s ease;"></div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 212, 255, 0.02)); border-radius: 10px; border-left: 3px solid #0066ff;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
+                        <span style="font-weight: 600; color: #ffffff;">SEO & Marketing Digital</span>
+                        <span style="color: #00d4ff; font-weight: 600;">Avancé</span>
+                    </div>
+                    <div style="width: 100%; height: 10px; background: rgba(0, 212, 255, 0.1); border-radius: 10px; overflow: hidden;">
+                        <div style="width: 85%; height: 100%; background: linear-gradient(90deg, #0066ff, #00d4ff); border-radius: 10px; transition: width 0.3s ease;"></div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2.5rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 212, 255, 0.02)); border-radius: 10px; border-left: 3px solid #0066ff;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.8rem;">
+                        <span style="font-weight: 600; color: #ffffff;">Flutter / Mobile Development</span>
+                        <span style="color: #00d4ff; font-weight: 600;">Intermédiaire</span>
+                    </div>
+                    <div style="width: 100%; height: 10px; background: rgba(0, 212, 255, 0.1); border-radius: 10px; overflow: hidden;">
+                        <div style="width: 70%; height: 100%; background: linear-gradient(90deg, #0066ff, #00d4ff); border-radius: 10px; transition: width 0.3s ease;"></div>
                     </div>
                 </div>
             </div>
