@@ -1,0 +1,62 @@
+{
+  "name": "mu-yves-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio professionnel de MU Yves - Développeur Full-Stack",
+  "author": "MU Yves <your.email@example.com>",
+  "license": "MIT",
+  "keywords": [
+    "portfolio",
+    "developer",
+    "full-stack",
+    "react",
+    "node",
+    "web development"
+  ],
+  "scripts": {
+    "start": "npm run server",
+    "server": "python -m http.server 8000",
+    "dev": "node server.js",
+    "build": "npm run lint",
+    "lint": "echo 'Lint checking...'",
+    "deploy": "git push origin main",
+    "test": "echo 'Running tests...'",
+    "docs": "echo 'Building documentation...'",
+    "format": "prettier --write ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MU-Yves/portfolio.git"
+  },
+  "homepage": "https://mu-yves.com",
+  "bugs": {
+    "url": "https://github.com/MU-Yves/portfolio/issues",
+    "email": "your.email@example.com"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0"
+  },
+  "dependencies": {},
+  "badges": [
+    {
+      "alt": "GitHub followers",
+      "image": "https://img.shields.io/github/followers/MU-Yves?style=social",
+      "url": "https://github.com/MU-Yves"
+    },
+    {
+      "alt": "GitHub stars",
+      "image": "https://img.shields.io/github/stars/MU-Yves?style=social",
+      "url": "https://github.com/MU-Yves"
+    }
+  ],
+  "social": {
+    "github": "https://github.com/MU-Yves",
+    "linkedin": "https://linkedin.com/in/mu-yves",
+    "twitter": "https://twitter.com/MU_Yves",
+    "email": "your.email@example.com"
+  }
+}
