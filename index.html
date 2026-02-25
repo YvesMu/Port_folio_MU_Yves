@@ -10,197 +10,211 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        .hero-enhanced {
+        /* Hero avec code visual */
+        .hero-developer {
             position: relative;
             overflow: hidden;
-            padding: 6rem 0;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 212, 255, 0.02) 100%);
+            padding: 8rem 0;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.02) 100%);
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
         }
 
-        .hero-enhanced::before {
-            content: '';
+        .code-animation {
             position: absolute;
-            top: -50%;
-            right: -5%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            opacity: 0.08;
+            pointer-events: none;
+            overflow: hidden;
+            user-select: none;
         }
 
-        .hero-enhanced::after {
-            content: '';
-            position: absolute;
-            bottom: -50%;
-            left: -5%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 25s infinite ease-in-out reverse;
+        .code-1 { top: 10%; right: 5%; width: 300px; animation: codeFloat 20s infinite ease-in-out; }
+        .code-2 { top: 60%; left: 5%; width: 280px; animation: codeFloat 25s infinite ease-in-out reverse; }
+        .code-3 { top: 30%; left: 50%; width: 250px; animation: codeFloat 22s infinite ease-in-out; }
+
+        @keyframes codeFloat {
+            0%, 100% { transform: translateY(0px) rotateZ(0deg); }
+            50% { transform: translateY(40px) rotateZ(2deg); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(30px); }
-        }
-
-        .hero-content-enhanced {
+        .hero-content-dev {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            max-width: 900px;
         }
 
-        .hero-title {
-            font-size: 4.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 0%, #b0c4ff 100%);
+        .hero-badge {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            border-radius: 50px;
+            color: #00d4ff;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: slideInDown 0.8s ease-out;
+        }
+
+        .hero-title-dev {
+            font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-title-dev .gradient-text {
+            background: linear-gradient(135deg, #0066ff 0%, #00d4ff 50%, #00ff88 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: slideInDown 0.8s ease-out;
         }
 
-        .hero-subtitle {
-            font-size: 2.5rem;
+        .hero-title-dev .normal-text {
+            color: #ffffff;
+            animation: slideInDown 0.8s ease-out 0.05s both;
+        }
+
+        .hero-role {
+            font-size: 1.8rem;
+            color: #64b5f6;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #0066ff, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-weight: 600;
             animation: slideInUp 0.8s ease-out 0.1s both;
         }
 
-        .hero-description {
-            font-size: 1.2rem;
-            opacity: 0.85;
-            max-width: 650px;
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
+        .hero-desc-dev {
+            font-size: 1.15rem;
+            color: #b0c4ff;
+            max-width: 700px;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+            animation: slideInUp 0.8s ease-out 0.15s both;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
             animation: slideInUp 0.8s ease-out 0.2s both;
         }
 
-        .cta-buttons-enhanced {
+        .stat-item {
+            padding: 1.5rem;
+            background: rgba(0, 102, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: #a0b0db;
+            font-weight: 600;
+        }
+
+        .cta-buttons-dev {
             display: flex;
             gap: 1.5rem;
             flex-wrap: wrap;
+            animation: slideInUp 0.8s ease-out 0.25s both;
+        }
+
+        .tech-stack-preview {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
             animation: slideInUp 0.8s ease-out 0.3s both;
         }
 
-        .btn-enhanced {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
+        .tech-badge {
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(0, 212, 255, 0.08));
+            border: 1px solid rgba(0, 212, 255, 0.3);
             border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary-enhanced {
-            background: linear-gradient(135deg, #0066ff, #00d4ff);
-            color: white;
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
-        }
-
-        .btn-primary-enhanced:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.4);
-        }
-
-        .btn-secondary-enhanced {
-            background: transparent;
             color: #00d4ff;
-            border: 2px solid #00d4ff;
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.1);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: default;
         }
 
-        .btn-secondary-enhanced:hover {
-            background: rgba(0, 212, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.2);
+        .tech-badge:hover {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.25), rgba(0, 212, 255, 0.15));
+            border-color: #00d4ff;
+            transform: scale(1.05);
         }
 
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Tech Stack Section */
+        .tech-showcase {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 102, 255, 0.05) 100%);
         }
 
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .about-section-enhanced {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 212, 255, 0.02) 100%);
-        }
-
-        .about-title {
+        .tech-showcase-title {
             font-size: 3rem;
             text-align: center;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, #0066ff, #00d4ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             position: relative;
             padding-bottom: 1.5rem;
         }
 
-        .about-title::after {
+        .tech-showcase-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 120px;
             height: 3px;
             background: linear-gradient(90deg, transparent, #0066ff, #00d4ff, transparent);
         }
 
-        .about-description {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: #b0c4ff;
-        }
-
-        .features-grid {
+        .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
         }
 
-        .feature-card {
-            padding: 2.5rem;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.05));
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 15px;
+        .tech-item {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.12), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 12px;
+            text-align: center;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
-        .feature-card::before {
+        .tech-item::before {
             content: '';
             position: absolute;
             top: 0;
@@ -212,42 +226,46 @@
             transition: opacity 0.3s ease;
         }
 
-        .feature-card:hover {
-            border-color: rgba(0, 212, 255, 0.5);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.1);
+        .tech-item:hover {
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
             transform: translateY(-8px);
         }
 
-        .feature-card:hover::before {
+        .tech-item:hover::before {
             opacity: 1;
         }
 
-        .feature-icon {
+        .tech-icon {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #0066ff, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            display: inline-block;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
             margin-bottom: 1rem;
+        }
+
+        .tech-name {
+            font-size: 1.3rem;
+            font-weight: 700;
             color: #ffffff;
+            margin-bottom: 0.5rem;
         }
 
-        .feature-card p {
+        .tech-desc {
+            font-size: 0.95rem;
             color: #a0b0db;
-            line-height: 1.6;
         }
 
-        .about-cta {
-            text-align: center;
-            margin-top: 3rem;
+        @media (max-width: 768px) {
+            .hero-title-dev {
+                font-size: 3.5rem;
+            }
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .code-animation {
+                display: none;
+            }
         }
     </style>
+</head>
 </head>
 <body>
     <!-- Navigation -->
@@ -262,64 +280,168 @@
                 <li><a href="about.html">À propos</a></li>
                 <li><a href="projects.html">Projets</a></li>
                 <li><a href="skills.html">Compétences</a></li>
-                <li><a href="blog.html">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-enhanced">
+    <!-- Hero Section Developer -->
+    <section class="hero-developer">
+        <!-- Code background animations -->
+        <div class="code-animation code-1">
+&lt;div class="project"&gt;<br>
+&nbsp;&nbsp;&lt;h1&gt;Full-Stack&lt;/h1&gt;<br>
+&nbsp;&nbsp;&lt;p&gt;React, Node, Web&lt;/p&gt;<br>
+&lt;/div&gt;
+        </div>
+        <div class="code-animation code-2">
+const deploy = async () =&gt; {<br>
+&nbsp;&nbsp;await build();<br>
+&nbsp;&nbsp;await test();<br>
+&nbsp;&nbsp;return launch();<br>
+}
+        </div>
+        <div class="code-animation code-3">
+function optimize() {<br>
+&nbsp;&nbsp;performance++;<br>
+&nbsp;&nbsp;seo.score();<br>
+&nbsp;&nbsp;return results;<br>
+}
+        </div>
+
         <div class="container">
-            <div class="hero-content-enhanced">
-                <h1 class="hero-title">Yves Mu</h1>
-                <h2 class="hero-subtitle">Ingénieur Web Full-Stack</h2>
-                <p class="hero-description">
-                    Diplômé ESGI 2025. Spécialisé en développement full-stack, SEO et optimisation web.
-                    Expérience en télécoms et PME. Autonome, polyvalent et orienté performance.
+            <div class="hero-content-dev">
+                <div class="hero-badge">
+                    <i class="fas fa-code"></i> DÉVELOPPEUR WEB FULL-STACK
+                </div>
+
+                <h1 class="hero-title-dev">
+                    <span class="normal-text">Bienvenue,</span><br>
+                    <span class="gradient-text">Je suis Yves Mu</span>
+                </h1>
+
+                <p class="hero-role">Ingénieur Web | React • Next.js • Node.js • PHP</p>
+
+                <p class="hero-desc-dev">
+                    Développeur depuis 2021 avec expertise en full-stack web. 
+                    Je crée des applications modernes, performantes et scalables pour des télécoms et PME. 
+                    Spécialisé en React, Next.js, SEO et optimisation web.
                 </p>
-                <div class="cta-buttons-enhanced">
-                    <a href="projects.html" class="btn-enhanced btn-primary-enhanced">Voir mes projets</a>
-                    <a href="contact.html" class="btn-enhanced btn-secondary-enhanced">Me contacter</a>
+
+                <!-- Stats -->
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Ans d'expérience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Projets livrés</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Technologies</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Qualité</div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="cta-buttons-dev">
+                    <a href="projects.html" class="btn-enhanced btn-primary-enhanced">
+                        <i class="fas fa-rocket"></i> Voir mes projets
+                    </a>
+                    <a href="contact.html" class="btn-enhanced btn-secondary-enhanced">
+                        <i class="fas fa-envelope"></i> Me contacter
+                    </a>
+                </div>
+
+                <!-- Tech Stack Preview -->
+                <div class="tech-stack-preview">
+                    <div class="tech-badge"><i class="fab fa-react"></i> React</div>
+                    <div class="tech-badge"><i class="fab fa-node-js"></i> Node.js</div>
+                    <div class="tech-badge"><i class="fas fa-lightning-bolt"></i> Next.js</div>
+                    <div class="tech-badge"><i class="fab fa-php"></i> PHP</div>
+                    <div class="tech-badge"><i class="fas fa-database"></i> PostgreSQL</div>
+                    <div class="tech-badge"><i class="fas fa-arrow-right"></i> Et plus...</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Preview Section -->
-    <section class="about-section-enhanced">
+    <!-- Tech Stack Showcase Section -->
+    <section class="tech-showcase">
         <div class="container">
-            <h2 class="about-title">À propos</h2>
-            <div style="max-width: 900px; margin: 0 auto;">
-                <p class="about-description">
-                    Je suis un développeur passionné avec plusieurs années d'expérience en développement web full-stack. 
-                    Mon objectif est de créer des applications web modernes, performantes et scalables qui résolvent des problèmes réels.
-                </p>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3>Clean Code</h3>
-                        <p>Code maintenable et bien structuré, suivant les meilleures pratiques et standards industriels.</p>
+            <h2 class="tech-showcase-title">Stack Technologique</h2>
+            <p style="text-align: center; color: #a0b0db; font-size: 1.1rem; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Maîtrise complète du développement web moderne avec les meilleures technologies du marché
+            </p>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div class="tech-icon" style="color: #61dafb;">
+                        <i class="fab fa-react"></i>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h3>Responsive</h3>
-                        <p>Interface adaptée à tous les appareils for une expérience utilisateur optimale.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3>Performance</h3>
-                        <p>Applications optimisées pour la vitesse et l'efficacité maximale.</p>
-                    </div>
+                    <div class="tech-name">React</div>
+                    <div class="tech-desc">UI interactives modernes et performantes</div>
                 </div>
-                <div class="about-cta">
-                    <a href="about.html" class="btn-enhanced btn-primary-enhanced">En savoir plus sur moi</a>
+
+                <div class="tech-item">
+                    <div class="tech-icon" style="color: #fff200;">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="tech-name">Next.js</div>
+                    <div class="tech-desc">SSR/SSG pour SEO et performance optimale</div>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon" style="color: #68a063;">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <div class="tech-name">Node.js</div>
+                    <div class="tech-desc">Backends scalables et APIs performantes</div>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon" style="color: #777bb4;">
+                        <i class="fab fa-php"></i>
+                    </div>
+                    <div class="tech-name">PHP</div>
+                    <div class="tech-desc">WordPress, systèmes legacy et web classique</div>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon" style="color: #336791;">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="tech-name">PostgreSQL</div>
+                    <div class="tech-desc">Données fiables, optimisées et sécurisées</div>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon" style="color: #4285f4;">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="tech-name">SEO</div>
+                    <div class="tech-desc">Optimisation technique et performance web</div>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon" style="color: #3fb5d0;">
+                        <i class="fab fa-flutter"></i>
+                    </div>
+                    <div class="tech-name">Flutter</div>
+                    <div class="tech-desc">Applications mobiles cross-platform</div>
+                </div>
+
+                <div class="tech-item">
+                    <div class="tech-icon" style="color: #00ff88;">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="tech-name">Git/DevOps</div>
+                    <div class="tech-desc">Versioning, CI/CD et déploiements</div>
                 </div>
             </div>
         </div>
