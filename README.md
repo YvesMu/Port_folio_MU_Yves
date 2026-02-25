@@ -1,11 +1,17 @@
-# 👋 Bienvenue sur mon Portfolio
+# 👋 Bienvenue sur mon Portfolio - Développeur Full-Stack
 
 <div align="center">
 
+[![GitHub followers](https://img.shields.io/github/followers/MU-Yves?style=social)](https://github.com/MU-Yves)
+[![GitHub stars](https://img.shields.io/github/stars/MU-Yves?style=social)](https://github.com/MU-Yves)
 ![Profile Views](https://komarev.com/ghpvc/?username=MU-Yves&style=flat-square)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mu-yves)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MU-Yves)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=web&logoColor=white)](https://github.com/MU-Yves/portfolio)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:votre.email@example.com)
+
+**[🌐 Voir le Portfolio En Ligne](https://mu-yves.github.io/portfolio/)** | **[📖 Guide de Déploiement](./GITHUB_PAGES_SETUP.md)**
 
 </div>
 
