@@ -7,6 +7,238 @@
     <title>À propos - MU Yves Portfolio</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .about-hero {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+            text-align: center;
+        }
+
+        .about-hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .about-hero-subtitle {
+            font-size: 1.3rem;
+            color: #b0c4ff;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-container {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #0066ff, #00d4ff);
+        }
+
+        .profile-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08), rgba(0, 212, 255, 0.04));
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .profile-text {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: #c5d3f0;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .approach-card {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.12), rgba(0, 212, 255, 0.05));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .approach-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #0066ff, #00d4ff);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .approach-card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.12);
+            transform: translateY(-8px);
+        }
+
+        .approach-card:hover::before {
+            opacity: 1;
+        }
+
+        .approach-card h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .approach-card p {
+            color: #a0b0db;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .timeline-item {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.04));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 2.5rem;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px transparent, 0 0 0 8px rgba(0, 102, 255, 0.2);
+        }
+
+        .timeline-item:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            color: #00d4ff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 6px;
+        }
+
+        .timeline-item p {
+            color: #b0c4ff;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-top: 1rem;
+        }
+
+        .timeline-item ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .timeline-item ul li {
+            color: #a0b0db;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item ul li::before {
+            content: '▸';
+            color: #00d4ff;
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: #c5d3f0;
+            margin-bottom: 2rem;
+        }
+
+        .btn-about {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-about-primary {
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            color: white;
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.3);
+        }
+
+        .btn-about-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 102, 255, 0.4);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -27,98 +259,134 @@
     </nav>
 
     <!-- Page Header -->
-    <section style="padding: 4rem 0; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);">
+    <section class="about-hero">
         <div class="container">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">À propos de Moi</h1>
-            <p style="font-size: 1.2rem; text-align: center; max-width: 700px; margin: 0 auto;">Passionné par la technologie et la création de solutions innovantes</p>
+            <h1 class="about-hero-title">À propos de Moi</h1>
+            <p class="about-hero-subtitle">Développeur Web Full-Stack passionné par la création de solutions innovantes et performantes</p>
         </div>
     </section>
 
     <!-- About Content -->
-    <section>
+    <section class="section-container">
         <div class="container">
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h2>Profil</h2>
-                <p style="font-size: 1.1rem; line-height: 2; margin-bottom: 2rem;">
-                    Ingénieur Web diplômé en 2025 de l'ESGI, spécialisé en développement full-stack et optimisation d'environnements web professionnels. 
-                    Expérience en télécoms et PME : développement applicatif, SEO, gestion CMS (WordPress, Odoo), automatisation et support client.
-                </p>
-                <p style="font-size: 1.1rem; line-height: 2; margin-bottom: 2rem;">
-                    Profil autonome, polyvalent et orienté performance. Je suis actuellement en recherche d'une opportunité CDI pour continuer mon développement professionnel et apporter ma contribution à des projets technologiques ambitieux.
-                </p>
+            <div style="max-width: 1000px; margin: 0 auto;">
+                <!-- Profile -->
+                <h2 class="section-title">Profil</h2>
+                <div class="profile-section">
+                    <p class="profile-text">
+                        <strong>Ingénieur Web Full-Stack</strong> diplômé ESGI 2025, spécialisé en développement front-end (React, Next.js) et back-end (Node.js, PHP).
+                        5+ ans d'expérience dans le développement applicatif, optimisation web, SEO et gestion de solutions digitales pour télécoms et PME.
+                    </p>
+                    <p class="profile-text">
+                        Profil <strong>autonome, polyvalent et orienté performance</strong>. Expert en architecture web, optimisation SEO, et déploiement de solutions scalables.
+                        Actuellement en recherche d'une opportunité CDI pour contribuer à des projets technologiques ambitieux.
+                    </p>
+                </div>
 
-                <h2 style="margin-top: 3rem;">Mon Approche</h2>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                    <div class="card">
-                        <h3>🎯 Centré sur l'Utilisateur</h3>
-                        <p>Chaque projet commence par comprendre les besoins réels des utilisateurs.</p>
+                <!-- Approach -->
+                <h2 class="section-title" style="margin-top: 4rem;">Ma Philosophie</h2>
+                <div class="approach-grid">
+                    <div class="approach-card">
+                        <h3><i class="fas fa-bullseye" style="color: #00d4ff; margin-right: 0.5rem;"></i>Centré sur l'Utilisateur</h3>
+                        <p>Chaque projet commence par comprendre les besoins réels des utilisateurs pour créer des solutions pertinentes.</p>
                     </div>
-                    <div class="card">
-                        <h3>⚡ Performance</h3>
-                        <p>Optimisation et performance sont au cœur de mes développements.</p>
+                    <div class="approach-card">
+                        <h3><i class="fas fa-bolt" style="color: #00d4ff; margin-right: 0.5rem;"></i>Performance</h3>
+                        <p>Optimisation et vitesse au cœur de chaque ligne de code. Des apps qui volent.</p>
                     </div>
-                    <div class="card">
-                        <h3>🔒 Sécurité</h3>
-                        <p>La sécurité est une priorité absolue dans tous mes projets.</p>
+                    <div class="approach-card">
+                        <h3><i class="fas fa-shield-alt" style="color: #00d4ff; margin-right: 0.5rem;"></i>Sécurité</h3>
+                        <p>Priorité absolue. Authentification, validation, chiffrement, bonnes pratiques. Zéro compromis.</p>
                     </div>
-                    <div class="card">
-                        <h3>📱 Responsive</h3>
-                        <p>Tous mes sites fonctionnent parfaitement sur tous les appareils.</p>
+                    <div class="approach-card">
+                        <h3><i class="fas fa-mobile-alt" style="color: #00d4ff; margin-right: 0.5rem;"></i>Responsive</h3>
+                        <p>Mobile-first. Parfait sur desktop, tablet et smartphone. Expérience fluidе partout.</p>
                     </div>
-                    <div class="card">
-                        <h3>🚀 Scalabilité</h3>
-                        <p>Les architectures que je conçois grandissent avec vos besoins.</p>
+                    <div class="approach-card">
+                        <h3><i class="fas fa-rocket" style="color: #00d4ff; margin-right: 0.5rem;"></i>Scalabilité</h3>
+                        <p>Architectures évolutives qui grandissent avec vos besoins. Pas de réécriture à 100 users.</p>
                     </div>
-                    <div class="card">
-                        <h3>💡 Innovation</h3>
-                        <p>Je reste à jour avec les dernières technologies et tendances.</p>
+                    <div class="approach-card">
+                        <h3><i class="fas fa-lightbulb" style="color: #00d4ff; margin-right: 0.5rem;"></i>Innovation</h3>
+                        <p>Toujours à jour avec les dernières technos et tendances. Apprentissage continu.</p>
                     </div>
                 </div>
 
-                <h2 style="margin-top: 3rem;">Expérience</h2>
-                <div style="margin-top: 2rem;">
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h3>Développeur Full-Stack Senior</h3>
-                        <p style="color: var(--secondary-color); margin-bottom: 0.5rem;">2023 - Présent</p>
-                        <p>Développement d'applications web complexes, architecture système, mentoring d'équipe.</p>
+                <!-- Experience -->
+                <h2 class="section-title" style="margin-top: 4rem;">Expérience Professionnelle</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Développeur Web Senior - Stage/CDI (2024-2026)</h3>
+                        <span class="timeline-date"><i class="fas fa-briefcase"></i> Profficium</span>
+                        <p>Développement d'applications web modernes et gestion de projets complexes.</p>
+                        <ul>
+                            <li>Conception et développement de solutions web full-stack</li>
+                            <li>Optimisation SEO et performance</li>
+                            <li>Gestion WordPress et intégrations métier</li>
+                            <li>Automatisation et support client</li>
+                        </ul>
                     </div>
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h3>Développeur Full-Stack</h3>
-                        <p style="color: var(--secondary-color); margin-bottom: 0.5rem;">2021 - 2023</p>
-                        <p>Création d'applications e-commerce, dashboards analytics, PWA.</p>
+
+                    <div class="timeline-item">
+                        <h3>Développeur Web / Expert SEO (2021-2024)</h3>
+                        <span class="timeline-date"><i class="fas fa-briefcase"></i> CDX Telecom</span>
+                        <p>Refonte web, analytics, campagnes Google Ads et optimisations digitales pour leader en télécoms.</p>
+                        <ul>
+                            <li>Refonte complète du site web avec React et Node.js</li>
+                            <li>Implémentation Google Analytics et GTM</li>
+                            <li>Gestion campagnes Google Ads (+200% ROI)</li>
+                            <li>SEO technique et optimisation conversion</li>
+                            <li>Migration CMS et intégrations systems</li>
+                        </ul>
                     </div>
-                    <div class="card">
-                        <h3>Développeur Frontend</h3>
-                        <p style="color: var(--secondary-color); margin-bottom: 0.5rem;">2019 - 2021</p>
-                        <p>Développement d'interfaces React, design responsive, optimisation performance.</p>
+
+                    <div class="timeline-item">
+                        <h3>Développeur Web (2022-2023)</h3>
+                        <span class="timeline-date"><i class="fas fa-briefcase"></i> AMI Téléphonie</span>
+                        <p>Développement sites web, SEO et support clients pour PME télécoms.</p>
+                        <ul>
+                            <li>Développement sites web WordPress/PHP</li>
+                            <li>Optimisation SEO on-page et structure</li>
+                            <li>Automation Odoo ERP</li>
+                            <li>Support client et maintenance</li>
+                        </ul>
                     </div>
                 </div>
 
-                <h2 style="margin-top: 3rem;">Formation</h2>
-                <div style="margin-top: 2rem;">
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h3>🎓 Master Ingénierie du Web</h3>
-                        <p style="color: var(--secondary-color); margin-bottom: 0.5rem;">ESGI (2023–2025)</p>
-                        <p>Formation complète en développement full-stack, architectures web, frameworks modernes.</p>
+                <!-- Education -->
+                <h2 class="section-title" style="margin-top: 4rem;">Formation</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Master Ingénierie du Web</h3>
+                        <span class="timeline-date"><i class="fas fa-graduation-cap"></i> ESGI (2023-2025)</span>
+                        <p>Formation complète en développement full-stack, architectures web, frameworks modernes et best practices.</p>
                     </div>
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h3>📚 Licence Professionnelle MIAW</h3>
-                        <p style="color: var(--secondary-color); margin-bottom: 0.5rem;">2022–2023</p>
-                        <p>Analyse web et applications métier.</p>
+
+                    <div class="timeline-item">
+                        <h3>Licence Professionnelle MIAW</h3>
+                        <span class="timeline-date"><i class="fas fa-graduation-cap"></i> (2022-2023)</span>
+                        <p>Métiers de l'Internet et Applications Web - Analyse web et développement applicatif métier.</p>
                     </div>
-                    <div class="card" style="margin-bottom: 1.5rem;">
-                        <h3>📚 DUT MMI</h3>
-                        <p style="color: var(--secondary-color); margin-bottom: 0.5rem;">Meaux (2020–2022)</p>
-                        <p>Métiers du Multimédia et Internet.</p>
+
+                    <div class="timeline-item">
+                        <h3>DUT MMI - Métiers du Multimédia et Internet</h3>
+                        <span class="timeline-date"><i class="fas fa-graduation-cap"></i> Meaux (2020-2022)</span>
+                        <p>Fondamentaux multimédia, web design, développement frontend et gestion projets digitaux.</p>
                     </div>
-                    <div class="card">
-                        <h3>📜 Bac STMG Mention Assez Bien</h3>
-                        <p style="color: var(--secondary-color); margin-bottom: 0.5rem;">Lycée Pablo Picasso</p>
+
+                    <div class="timeline-item">
+                        <h3>Bac STMG Mention Assez Bien</h3>
+                        <span class="timeline-date"><i class="fas fa-certificate"></i> Lycée Pablo Picasso</span>
+                        <p>Sciences et Technologies du Management et de la Gestion.</p>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 3rem;">
-                    <a href="contact.html" class="btn btn-primary">Parlons ensemble!</a>
+                <!-- CTA -->
+                <div class="cta-section">
+                    <p>Intéressé par une collaboration ou une opportunité? Parlons ensemble!</p>
+                    <a href="contact.html" class="btn-about btn-about-primary">
+                        <i class="fas fa-envelope"></i> Prendre Contact
+                    </a>
                 </div>
             </div>
         </div>
