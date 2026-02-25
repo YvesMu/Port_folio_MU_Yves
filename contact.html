@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact - MU Yves Full-Stack Developer">
+    <title>Contact - MU Yves Portfolio</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">MU Yves</a>
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="projects.html">Projets</a></li>
+                <li><a href="skills.html">Compétences</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section style="padding: 4rem 0; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);">
+        <div class="container">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">Me Contacter</h1>
+            <p style="font-size: 1.2rem; text-align: center; max-width: 700px; margin: 0 auto;">Parlons de vos projets</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section>
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; max-width: 1000px; margin: 0 auto;">
+                <!-- Contact Info -->
+                <div>
+                    <h2>Informations de Contact</h2>
+                    <div style="margin-top: 2rem;">
+                        <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
+                            <div style="flex-shrink: 0;">
+                                <i class="fas fa-envelope" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; margin-bottom: 0.3rem;">Email</h3>
+                                <p style="margin: 0;"><a href="mailto:contact@example.com" style="color: inherit; text-decoration: none;">contact@example.com</a></p>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
+                            <div style="flex-shrink: 0;">
+                                <i class="fas fa-phone" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; margin-bottom: 0.3rem;">Téléphone</h3>
+                                <p style="margin: 0;"><a href="tel:+1234567890" style="color: inherit; text-decoration: none;">+1 (234) 567-890</a></p>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
+                            <div style="flex-shrink: 0;">
+                                <i class="fas fa-map-marker-alt" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; margin-bottom: 0.3rem;">Localisation</h3>
+                                <p style="margin: 0;">Ville, Pays</p>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
+                            <div style="flex-shrink: 0;">
+                                <i class="fas fa-globe" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0; margin-bottom: 0.3rem;">Réseaux</h3>
+                                <div style="display: flex; gap: 1rem; margin-top: 0.5rem;">
+                                    <a href="https://github.com" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 102, 255, 0.1); color: var(--secondary-color); text-decoration: none;">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                    <a href="https://linkedin.com" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 102, 255, 0.1); color: var(--secondary-color); text-decoration: none;">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                    <a href="https://twitter.com" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(0, 102, 255, 0.1); color: var(--secondary-color); text-decoration: none;">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="background: rgba(0, 102, 255, 0.05); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+                        <h3 style="margin-top: 0;">Disponibilité</h3>
+                        <p style="margin-bottom: 0.5rem;"><strong>Type de Projets:</strong> Full-Stack, Frontend, Backend</p>
+                        <p style="margin-bottom: 0.5rem;"><strong>Tarifs:</strong> Selon projet</p>
+                        <p style="margin: 0;"><strong>Délai Réponse:</strong> 24 à 48h</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <h2>Envoyez un Message</h2>
+                    <form style="margin-top: 2rem;" onsubmit="handleFormSubmit(event)">
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;" for="name">Nom</label>
+                            <input type="text" id="name" name="name" required style="width: 100%; padding: 0.8rem; background: var(--card-bg); border: 1px solid rgba(0, 102, 255, 0.2); border-radius: 5px; color: var(--text-color); font-size: 1rem;">
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;" for="email">Email</label>
+                            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.8rem; background: var(--card-bg); border: 1px solid rgba(0, 102, 255, 0.2); border-radius: 5px; color: var(--text-color); font-size: 1rem;">
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;" for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" required style="width: 100%; padding: 0.8rem; background: var(--card-bg); border: 1px solid rgba(0, 102, 255, 0.2); border-radius: 5px; color: var(--text-color); font-size: 1rem;">
+                        </div>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;" for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.8rem; background: var(--card-bg); border: 1px solid rgba(0, 102, 255, 0.2); border-radius: 5px; color: var(--text-color); font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer le Message</button>
+                    </form>
+
+                    <div id="form-message" style="margin-top: 1rem; display: none; padding: 1rem; border-radius: 5px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="background: rgba(0, 102, 255, 0.05); margin-top: 4rem;">
+        <div class="container">
+            <h2>Questions Fréquemment Posées</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div class="card">
+                    <h3>Quel est votre tarif?</h3>
+                    <p>Les tarifs varient selon la complexité et la durée du projet. Contactez-moi pour un devis personnalisé.</p>
+                </div>
+                <div class="card">
+                    <h3>Acceptez-vous les clients internationaux?</h3>
+                    <p>Oui, j'accepte des clients du monde entier. Fuseau horaire et communication ne sont pas un problème.</p>
+                </div>
+                <div class="card">
+                    <h3>Quel est le délai minimum?</h3>
+                    <p>Cela dépend de votre projet. Après discussion, je peux généralement débuter rapidement.</p>
+                </div>
+                <div class="card">
+                    <h3>Offrez-vous du support après le projet?</h3>
+                    <p>Oui, je fournis le support et maintenance après le lancement du projet.</p>
+                </div>
+                <div class="card">
+                    <h3>Puis-je voir vos projets antérieurs?</h3>
+                    <p>Bien sûr! Consultez ma page <a href="projects.html" style="color: var(--secondary-color); text-decoration: none;">Projets</a> pour plus de détails.</p>
+                </div>
+                <div class="card">
+                    <h3>Comment fonctionne le processus?</h3>
+                    <p>1) Discussez vos besoins 2) Je propose une solution 3) Développement 4) Tests 5) Lancement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-text">
+                <p>&copy; 2026 MU Yves. Tous droits réservés.</p>
+            </div>
+            <div class="social-links">
+                <a href="https://github.com" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.style.display = 'block';
+            messageDiv.style.background = 'rgba(0, 212, 255, 0.1)';
+            messageDiv.style.color = '#00d4ff';
+            messageDiv.style.border = '1px solid #00d4ff';
+            messageDiv.textContent = '✓ Merci pour votre message! Je vous répondrai bientôt.';
+            event.target.reset();
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
