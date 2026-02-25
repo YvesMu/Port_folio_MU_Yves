@@ -7,6 +7,153 @@
     <title>Contact - MU Yves Portfolio</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+        }
+
+        .contact-card p {
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .contact-link {
+            display: inline-block;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            word-break: break-all;
+        }
+
+        .contact-link:hover {
+            transform: translateX(2px);
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.15);
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-icons-big {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-icon-btn {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.25);
+        }
+
+        .social-icon-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact-card {
+                padding: 1.8rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -28,150 +175,101 @@
     </nav>
 
     <!-- Page Header -->
-    <section style="padding: 4rem 0; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);">
+    <section style="padding: 5rem 0 3rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.15) 0%, rgba(0, 212, 255, 0.08) 100%);">
         <div class="container">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem; text-align: center;">Me Contacter</h1>
-            <p style="font-size: 1.2rem; text-align: center; max-width: 700px; margin: 0 auto;">Parlons de vos projets</p>
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem; text-align: center; background: linear-gradient(135deg, #0066ff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Me Contacter</h1>
+            <p style="font-size: 1.15rem; text-align: center; max-width: 700px; margin: 0 auto; opacity: 0.9;">Vous avez un projet intéressant ? Parlons-en ! Je suis toujours ouvert à de nouvelles opportunités.</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section>
+    <!-- Contact Information -->
+    <section style="padding: 4rem 0;">
         <div class="container">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; max-width: 1000px; margin: 0 auto;">
-                <!-- Contact Info -->
-                <div>
-                    <h2>Informations de Contact</h2>
-                    <div style="margin-top: 2rem;">
-                        <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
-                            <div style="flex-shrink: 0;">
-                                <i class="fas fa-envelope" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 style="margin: 0; margin-bottom: 0.3rem;">Email</h3>
-                                <p style="margin: 0;"><a href="mailto:yvesmu@yahoo.com" style="color: inherit; text-decoration: none;">yvesmu@yahoo.com</a></p>
-                            </div>
-                        </div>
-
-                        <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
-                            <div style="flex-shrink: 0;">
-                                <i class="fas fa-phone" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 style="margin: 0; margin-bottom: 0.3rem;">Téléphone</h3>
-                                <p style="margin: 0;"><a href="tel:+33766005976" style="color: inherit; text-decoration: none;">+33 7 66 00 59 76</a></p>
-                            </div>
-                        </div>
-
-                        <div style="margin-bottom: 2rem; display: flex; gap: 1rem;">
-                            <div style="flex-shrink: 0;">
-                                <i class="fas fa-globe" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 style="margin: 0; margin-bottom: 0.3rem;">Réseaux Professionnels</h3>
-                                <div style="display: flex; gap: 1.5rem; margin-top: 1rem;">
-                                    <a href="https://github.com/YvesMu/" target="_blank" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: inherit;">
-                                        <div style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(0, 102, 255, 0.1); color: var(--secondary-color); margin-bottom: 0.5rem; transition: all 0.3s ease;">
-                                            <i class="fab fa-github" style="font-size: 1.5rem;"></i>
-                                        </div>
-                                        <span style="font-size: 0.9rem;">GitHub</span>
-                                    </a>
-                                    <a href="https://www.linkedin.com/in/yves-mu-4a1540251/" target="_blank" style="display: flex; flex-direction: column; align-items: center; text-decoration: none; color: inherit;">
-                                        <div style="display: inline-flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(0, 102, 255, 0.1); color: var(--secondary-color); margin-bottom: 0.5rem; transition: all 0.3s ease;">
-                                            <i class="fab fa-linkedin" style="font-size: 1.5rem;"></i>
-                                        </div>
-                                        <span style="font-size: 0.9rem;">LinkedIn</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="contact-grid">
+                <!-- Email Card -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
                     </div>
-
-                    <div style="background: rgba(0, 102, 255, 0.05); padding: 1.5rem; border-radius: 10px; margin-top: 2rem; border: 1px solid rgba(0, 212, 255, 0.2);">
-                        <h3 style="margin-top: 0; color: var(--secondary-color);">📍 À Propos de Moi</h3>
-                        <p style="margin-bottom: 0.5rem;">Développeur Full-Stack passionné par la création de solutions technologiques modernes et performantes.</p>
-                        <p style="margin: 0;">Toujours disponible pour discuter de nouveaux projets intéressants et collaborer avec des équipes dynamiques!</p>
-                    </div>
+                    <h3>Email</h3>
+                    <p>Envoyez-moi un message directement</p>
+                    <a href="mailto:yvesmu@yahoo.com" class="contact-link">yvesmu@yahoo.com</a>
                 </div>
 
-                <!-- Contact Form -->
-                <div>Quick Contact Cards -->
-                <div>
-                    <h2>Me Joindre Rapidement</h2>
-                    <div style="display: grid; gap: 1rem; margin-top: 2rem;">
-                        <a href="mailto:yvesmu@yahoo.com" style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.05)); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.3s ease; cursor: pointer;">
-                            <div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(0, 212, 255, 0.1); border-radius: 50%; flex-shrink: 0;">
-                                <i class="fas fa-envelope" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 style="margin: 0; margin-bottom: 0.2rem;">Email</h3>
-                                <p style="margin: 0; opacity: 0.8;">yvesmu@yahoo.com</p>
-                            </div>
-                        </a>
+                <!-- Phone Card -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Téléphone</h3>
+                    <p>Discutons de vos projets</p>
+                    <a href="tel:+33766005976" class="contact-link">+33 7 66 00 59 76</a>
+                </div>
 
-                        <a href="tel:+33766005976" style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.05)); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.3s ease; cursor: pointer;">
-                            <div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(0, 212, 255, 0.1); border-radius: 50%; flex-shrink: 0;">
-                                <i class="fas fa-phone" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 style="margin: 0; margin-bottom: 0.2rem;">Téléphone</h3>
-                                <p style="margin: 0; opacity: 0.8;">+33 7 66 00 59 76</p>
-                            </div>
-                        </a>
+                <!-- GitHub Card -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Consultez mes projets open source</p>
+                    <a href="https://github.com/YvesMu/" target="_blank" class="contact-link">YvesMu</a>
+                </div>
 
-                        <a href="https://github.com/YvesMu/" target="_blank" style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.05)); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.3s ease; cursor: pointer;">
-                            <div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(0, 212, 255, 0.1); border-radius: 50%; flex-shrink: 0;">
-                                <i class="fab fa-github" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 style="margin: 0; margin-bottom: 0.2rem;">GitHub</h3>
-                                <p style="margin: 0; opacity: 0.8;">YvesMu</p>
-                            </div>
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/yves-mu-4a1540251/" target="_blank" style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.05)); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; text-decoration: none; color: inherit; transition: all 0.3s ease; cursor: pointer;">
-                            <div style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(0, 212, 255, 0.1); border-radius: 50%; flex-shrink: 0;">
-                                <i class="fab fa-linkedin" style="font-size: 1.5rem; color: var(--secondary-color);"></i>
-                            </div>
-                            <div>
-                                <h3 style="margin: 0; margin-bottom: 0.2rem;">LinkedIn</h3>
-                                <p style="margin: 0; opacity: 0.8;">Yves Mu</p>
-                            </div>
-                        </a>
-                    
+                <!-- LinkedIn Card -->
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Connectez-moi professionnellement</p>
+                    <a href="https://www.linkedin.com/in/yves-mu-4a1540251/" target="_blank" class="contact-link">Yves Mu</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section style="background: rgba(0, 102, 255, 0.05); margin-top: 4rem;">
+    <!-- CTA Section -->
+    <section style="padding: 3rem 0;">
         <div class="container">
-            <h2>Questions Fréquemment Posées</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
-                <div class="card">
-                    <h3>Quel est votre tarif?</h3>
-                    <p>Les tarifs varient selon la complexité et la durée du projet. Contactez-moi pour un devis personnalisé.</p>
+            <div class="cta-section">
+                <h2>Prêt à démarrer un projet?</h2>
+                <p>
+                    Je suis disponible pour discuter de vos idées, vous conseiller sur la meilleure approche technique, 
+                    ou directement commencer le développement. Contactez-moi sans hésitation!
+                </p>
+                <div class="social-icons-big">
+                    <a href="mailto:yvesmu@yahoo.com" class="social-icon-btn" title="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="tel:+33766005976" class="social-icon-btn" title="Téléphone">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                    <a href="https://github.com/YvesMu/" target="_blank" class="social-icon-btn" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/yves-mu-4a1540251/" target="_blank" class="social-icon-btn" title="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
                 </div>
-                <div class="card">
-                    <h3>Acceptez-vous les clients internationaux?</h3>
-                    <p>Oui, j'accepte des clients du monde entier. Fuseau horaire et communication ne sont pas un problème.</p>
-                </div>
-                <div class="card">
-                    <h3>Quel est le délai minimum?</h3>
-                    <p>Cela dépend de votre projet. Après discussion, je peux généralement débuter rapidement.</p>
-                </div>
-                <div class="card">
-                    <h3>Offrez-vous du support après le projet?</h3>
-                    <p>Oui, je fournis le support et maintenance après le lancement du projet.</p>
-                </div>
-                <div class="card">
-                    <h3>Puis-je voir vos projets antérieurs?</h3>
-                    <p>Bien sûr! Consultez ma page <a href="projects.html" style="color: var(--secondary-color); text-decoration: none;">Projets</a> pour plus de détails.</p>
-                </div>
-                <div class="card">
-                    <h3>Comment fonctionne le processus?</h3>
-                    <p>1) Discussez vos besoins 2) Je propose une solution 3) Développement 4) Tests 5) Lancement</p>
-                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section style="padding: 3rem 0; background: rgba(0, 102, 255, 0.03);">
+        <div class="container">
+            <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+                <h2 style="margin-bottom: 2rem;">À Propos de Moi</h2>
+                <p style="font-size: 1.05rem; line-height: 1.8; opacity: 0.9; margin-bottom: 1.5rem;">
+                    Je suis un développeur Full-Stack passionné par la création de solutions technologiques innovantes, 
+                    modernes et performantes. Je conçois des applications qui non seulement fonctionnent parfaitement, 
+                    mais qui offrent également une expérience utilisateur exceptionnelle.
+                </p>
+                <p style="font-size: 1.05rem; line-height: 1.8; opacity: 0.9;">
+                    Que vous ayez un projet précis en tête ou que vous cherchiez simplement à explorer les possibilités, 
+                    je serais ravi d'en discuter avec vous.
+                </p>
             </div>
         </div>
     </section>
@@ -183,9 +281,9 @@
                 <p>&copy; 2026 MU Yves. Tous droits réservés.</p>
             </div>
             <div class="social-links">
-                <a href="https://github.com" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/YvesMu/" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/yves-mu-4a1540251/" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:yvesmu@yahoo.com" title="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </footer>
