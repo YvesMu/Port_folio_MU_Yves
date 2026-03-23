@@ -202,6 +202,11 @@ function fermerModalProjets() {
     document.body.style.overflow = 'auto'; // Réactive le scroll
 }
 
+// Alias pour compatibilité avec les boutons onclick
+function closeProjectModal() {
+    fermerModalProjets();
+}
+
 // Initialise les interactions des cartes projets (clic pour ouvrir modal)
 function initialiserModalProjets() {
     // Clic sur une carte projet ouvre les détails
