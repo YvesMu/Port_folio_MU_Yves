@@ -1,394 +1,255 @@
-// Mobile menu toggle
+// =========================================================================
+// PORTFOLIO - Interactions & Dynamique
+// Ce fichier gère toutes les fonctionnalités interactives du portfolio
+// Animations au scroll, menus mobiles, modales, formulaires...
+// =========================================================================
+
 document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
-    
-    if (mobileMenu) {
-        mobileMenu.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-            });
-        });
-    }
-
-    // Set active nav link
-    const currentLocation = location.href;
-    const menuItems = document.querySelectorAll('.nav-links a');
-    menuItems.forEach(item => {
-        if (item.href === currentLocation) {
-            item.classList.add('active');
-        }
-    });
-
-    // Scroll animation for cards with enhanced effects
-    const cards = document.querySelectorAll('.card, .project-card, .skill-card, .tech-item');
-    
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 50);
-            }
-        });
-    }, observerOptions);
-
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-
-    // Animate stat numbers
-    const animateStats = () => {
-        const statNumbers = document.querySelectorAll('.stat-number');
-        statNumbers.forEach(stat => {
-            const finalNumber = parseInt(stat.textContent);
-            if (!isNaN(finalNumber) && stat.dataset.animated !== 'true') {
-                let currentNumber = 0;
-                const increment = finalNumber / 30;
-                const timer = setInterval(() => {
-                    currentNumber += increment;
-                    if (currentNumber >= finalNumber) {
-                        stat.textContent = finalNumber + '+';
-                        stat.dataset.animated = 'true';
-                        clearInterval(timer);
-                    } else {
-                        stat.textContent = Math.floor(currentNumber) + '+';
-                    }
-                }, 50);
-            }
-        });
-    };
-
-    // Check if stats are in viewport
-    const statsContainer = document.querySelector('.stats-container');
-    if (statsContainer) {
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.target.dataset.statsAnimated !== 'true') {
-                    entry.target.dataset.statsAnimated = 'true';
-                    animateStats();
-                }
-            });
-        });
-        statsObserver.observe(statsContainer);
-    }
-
-    // Parallax effect on scroll
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.hero-developer, .tech-showcase');
-        
-        parallaxElements.forEach(element => {
-            if (element.classList.contains('hero-developer')) {
-                const codeAnimations = element.querySelectorAll('.code-animation');
-                codeAnimations.forEach(code => {
-                    code.style.transform = `translateY(${scrolled * 0.5}px)`;
-                });
-            }
-        });
-
-        // Navbar background on scroll
-        const navbar = document.querySelector('.navbar');
-        if (scrolled > 50) {
-            navbar.style.background = 'rgba(10, 14, 39, 0.98)';
-            navbar.style.boxShadow = '0 5px 20px rgba(0, 102, 255, 0.1)';
-        } else {
-            navbar.style.background = 'rgba(10, 14, 39, 0.95)';
-            navbar.style.boxShadow = 'none';
-        }
-    });
-
-    // Add glow effect to interactive elements on hover
-    document.querySelectorAll('a, button').forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            this.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        });
-    });
-
-    // Form submission
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre message! Je vous répondrai bientôt.');
-            contactForm.reset();
-        });
-    }
-
-    // Add smooth reveal animation to sections on scroll
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        const sectionObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.target.dataset.revealed !== 'true') {
-                    entry.target.dataset.revealed = 'true';
-                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
-                }
-            });
-        });
-        sectionObserver.observe(section);
-    });
+    // Au chargement complet de la page, on initialise toutes les fonctionnalités
+    initialiserMenuMobile();
+    marquerLienActif();
+    initialiserAnimationsScroll();
+    initialiserEffetParallaxe();
+    initialiserModalProjets();
+    initialiserFormulaireContact();
+    initialiserBoutonssCopie();
 });
 
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
-// Mouse tracking effect for tech items
-document.querySelectorAll('.tech-item').forEach(item => {
-    item.addEventListener('mousemove', function(e) {
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        this.style.transform = `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) perspective(1000px)`;
-    });
+// Gère l'ouverture/fermeture du menu mobile sur petits écrans
+function initialiserMenuMobile() {
+    const menuMobile = document.querySelector('.mobile-menu');
+    const liensNav = document.querySelector('.nav-links');
+    if (!menuMobile) return; // Si pas de menu, on arrête
     
-    item.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(-8px) rotateX(0) rotateY(0)';
+    // Clic sur le bouton des 3 lignes ouvre/ferme le menu
+    menuMobile.addEventListener('click', () => liensNav.classList.toggle('active'));
+    
+    // Clic sur un lien du menu le ferme automatiquement
+    document.querySelectorAll('.nav-links a').forEach(lien => {
+        lien.addEventListener('click', () => liensNav.classList.remove('active'));
     });
-});
-
-// Add fade-in-up animation keyframes dynamically
-if (!document.querySelector('style[data-animations]')) {
-    const style = document.createElement('style');
-    style.setAttribute('data-animations', 'true');
-    style.textContent = `
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    `;
-    document.head.appendChild(style);
 }
 
-// ==================== PROJECT MODAL ==================== //
-const projectsData = {
+// Marque le lien de navigation actuel (page visitée) avec une classe CSS
+function marquerLienActif() {
+    const urlActuelle = location.href;
+    document.querySelectorAll('.nav-links a').forEach(lien => {
+        // Si le href du lien correspond à l'URL actuelle, on l'active
+        if (lien.href === urlActuelle) lien.classList.add('active');
+    });
+}
+
+// Animation des éléments au scroll - chaque carte apparaît progressivement quand on scroll dessus
+function initialiserAnimationsScroll() {
+    const cartes = document.querySelectorAll('.card, .project-card, .skill-card, .tech-item');
+    
+    // Observateur pour détecter si un élément entre en vue
+    const observateur = new IntersectionObserver((entrees) => {
+        entrees.forEach((entree, index) => {
+            // Quand on voit l'élément, on l'anime avec un décalage progressif
+            if (entree.isIntersecting) {
+                setTimeout(() => {
+                    entree.target.style.opacity = '1';
+                    entree.target.style.transform = 'translateY(0)';
+                }, index * 50); // Délai décalé pour un effet cascade
+            }
+        });
+    }, { threshold: 0.1 }); // Déclenche quand 10% de l'élément est visible
+
+    // On prépare les cartes avec opacity 0 (invisibles) et on les observe
+    cartes.forEach(carte => {
+        carte.style.opacity = '0';
+        carte.style.transform = 'translateY(20px)'; // Décalée vers le bas au départ
+        carte.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observateur.observe(carte);
+    });
+}
+
+// Effets parallaxe et interactivité au scroll/souris
+function initialiserEffetParallaxe() {
+    // Scroll lisse pour les liens d'ancrage (#section)
+    document.querySelectorAll('a[href^="#"]').forEach(lien => {
+        lien.addEventListener('click', (e) => {
+            e.preventDefault();
+            const cible = document.querySelector(lien.getAttribute('href'));
+            if (cible) cible.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Ajoute une ombre à la navbar quand on scroll
+    window.addEventListener('scroll', () => {
+        const navbar = document.querySelector('.navbar');
+        if (!navbar) return;
+        const defilement = window.pageYOffset;
+        // Plus l'ombre est intense qu'on descend dans la page
+        navbar.style.boxShadow = defilement > 50 
+            ? '0 0 30px rgba(0, 102, 255, 0.4)' 
+            : '0 0 15px rgba(0, 102, 255, 0.1)';
+    });
+
+    // Effet 3D sur chaque technologie au survol de la souris
+    document.querySelectorAll('.tech-item').forEach(item => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centreX = rect.width / 2;
+            const centreY = rect.height / 2;
+            // Calcul de la rotation en fonction de la position souris
+            const rotationX = (y - centreY) / 10;
+            const rotationY = (centreX - x) / 10;
+            item.style.transform = `translateY(-8px) rotateX(${rotationX}deg) rotateY(${rotationY}deg) perspective(1000px)`;
+        });
+        // Réinitialise la rotation quand on sort
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'translateY(-8px) rotateX(0) rotateY(0)';
+        });
+    });
+}
+
+// =========================================================================
+// BASE DE DONNÉES DES PROJETS
+// Chaque projet contient : titre, description, technologies, détails, résultats
+// =========================================================================
+const donneeProjets = {
     1: {
         title: 'Plateforme Emploi Intelligente',
-        description: 'Plateforme complète de mise en relation entre entreprises et candidats avec système de matching intelligent basé sur les compétences, préférences et objectifs professionnels.',
+        description: 'Plateforme d\'emploi avec système de matching, chat temps réel et visioconférence intégrée.',
         icon: 'fas fa-briefcase',
         gradient: 'linear-gradient(135deg, #0066ff, #00d4ff)',
-        technologies: ['React', 'Node.js', 'WebRTC', 'MongoDB', 'Socket.io', 'Stripe', 'AWS'],
-        details: [
-            'Système de matching algorithme basé sur l\'IA',
-            'Chat temps réel entreprise/candidat',
-            'Visioconférence intégrée avec WebRTC',
-            'Dashboard analytics avancé',
-            'Gestion des candidatures et offres',
-            'Système de notification en temps réel',
-            'Paiement sécurisé intégré'
-        ],
-        results: [
-            { label: '500+', desc: 'Utilisateurs' },
-            { label: '95%', desc: 'Taux de match' },
-            { label: '2.5s', desc: 'Temps de réponse' }
-        ]
+        technologies: ['React', 'REST API', 'PostgreSQL', 'Kubernetes', 'Tailwind', 'CSS'],
+        details: ['Système de matching avancé', 'Chat en temps réel', 'Intégration visioconférence', 'Dashboard analytics', 'Notifications push', 'Déploiement Kubernetes', '500+ utilisateurs actifs'],
+        results: [{ label: '500+', desc: 'Utilisateurs actifs' }, { label: '95%', desc: 'Taux de matching' }, { label: '2.5s', desc: 'Temps réponse' }]
     },
     2: {
-        title: 'Application Mobile Sport Coach',
-        description: 'Application cross-platform révolutionnaire pour suivi des performances sportives, planification d\'entraînement personnalisé et coaching en ligne avec IA.',
+        title: 'ModyTrainer - Application Mobile',
+        description: 'Application mobile développée avec Flutter pour la gestion d\'entraînement et suivi des performances.',
         icon: 'fas fa-mobile-alt',
         gradient: 'linear-gradient(135deg, #00d4ff, #0066ff)',
-        technologies: ['Flutter', 'Dart', 'Firebase', 'Swift', 'Kotlin', 'TensorFlow Lite'],
-        details: [
-            'Support iOS et Android natif',
-            'Tracker GPS et capteurs intégrés',
-            'Plans d\'entraînement personnalisés',
-            'Coaching vidéo interactif',
-            'Analyse de performance avec IA',
-            'Communauté et défis sportifs',
-            'Intégration with Apple Health & Google Fit'
-        ],
-        results: [
-            { label: '50K+', desc: 'Téléchargements' },
-            { label: '4.8★', desc: 'Note moyenne' },
-            { label: '30%', desc: 'Croissance/mois' }
-        ]
+        technologies: ['Flutter', 'Dart', 'Android Studio', 'Strapi', 'REST API', 'Tailwind'],
+        details: ['Application cross-platform', 'Backend Strapi intégré', 'API REST pour communication', 'Interface utilisateur Tailwind', 'Gestion complète des utilisateurs', 'Suivi des performances en temps réel', 'Documentation & formation clientèle'],
+        results: [{ label: 'Flutter', desc: 'Framework mobile' }, { label: 'Strapi', desc: 'Backend headless' }, { label: 'Production', desc: 'Prêt à l\'emploi' }]
     },
     3: {
         title: 'Jeu Vidéo Éducatif 3D',
-        description: 'Jeu interactif immersif développé en Unity avec graphiques 3D avancés, apprentissage gamifié et système de progression personnalisé.',
+        description: 'Jeu immersif Unity avec réalité augmentée Vuforia et modélisation 3D Blender.',
         icon: 'fas fa-cube',
-        gradient: 'linear-gradient(135deg, #6600ff, #00d4ff)',
-        technologies: ['Unity', 'C#', 'Blender', 'NVIDIA PhysX', 'Cinemachine', 'Shader Graph'],
-        details: [
-            'Modélisation 3D avancée sous Blender',
-            'Système de physique réaliste',
-            ' Levels progressifs et challenges',
-            'Localisation 12 langues',
-            'Cross-platform (PC, Console, Mobile)',
-            'Système de sauvegarde cloud',
-            'Leaderboards et achievements'
-        ],
-        results: [
-            { label: '100K+', desc: 'Joueurs actifs' },
-            { label: '15h', desc: 'Temps moyen de jeu' },
-            { label: '92%', desc: 'Retention' }
-        ]
+        gradient: 'linear-gradient(135deg, #ff5733, #00d4ff)',
+        technologies: ['Unity', 'C#', 'Blender', 'Vuforia', 'Réalité Augmentée'],
+        details: ['Modélisation 3D avec Blender', 'Réalité augmentée Vuforia', 'Niveaux progressifs', 'Multilingue (12 langues)', 'Compatible cross-platform', 'Sauvegarde cloud', 'Système d\'achievements'],
+        results: [{ label: '100K+', desc: 'Joueurs actifs' }, { label: '15h', desc: 'Temps moyen de jeu' }, { label: '92%', desc: 'Rétention utilisateurs' }]
     },
     4: {
-        title: 'Refonte Complète Site Web',
-        description: 'Modernisation complète du site web CDX Telecom avec UI/UX redesign, optimisation performance, et stratégie SEO technique avancée.',
-        icon: 'fas fa-globe',
+        title: 'Stratégie SEO et Marketing Digital',
+        description: 'Stratégie SEO complète et marketing digital avec Google Suite pour optimiser la visibilité en ligne.',
+        icon: 'fas fa-search',
         gradient: 'linear-gradient(135deg, #00d4ff, #6600ff)',
-        technologies: ['React', 'Next.js', 'Tailwind CSS', 'GraphQL', 'Vercel', 'Core Web Vitals'],
-        details: [
-            'Redesign UI/UX moderne et responsive',
-            'Optimisation SEO technique complète',
-            'Amélioration des Core Web Vitals',
-            'Time to First Byte réduit de 70%',
-            'Lighthouse score: 98/100',
-            'Migration sécurisée des données',
-            'A/B testing et conversion optimization'
-        ],
-        results: [
-            { label: '65%', desc: '↓ Bounce rate' },
-            { label: '3x', desc: '↑ Conversions' },
-            { label: '#1', desc: 'Google rank' }
-        ]
+        technologies: ['Google Analytics', 'Google Ads', 'Google Search Console', 'SEO technique', 'Content Marketing'],
+        details: ['Audit SEO complet', 'Optimisation Google Ads', 'Configuration Google Search Console', 'Analytics avancée', 'Stratégie mots-clés', 'Monitoring et reporting', 'Amélioration SERP'],
+        results: [{ label: 'Google Suite', desc: 'Suite complète' }, { label: 'SEO', desc: 'Optimisé' }, { label: 'Growth', desc: 'Mesurable' }]
     },
     5: {
-        title: 'Blog Entreprise & SEO',
-        description: 'Création et gestion complète d\'un blog d\'entreprise avec stratégie SEO avancée, contenu optimisé et analytics intégré.',
-        icon: 'fas fa-blog',
+        title: 'Refonte Site Web CDX Telecom',
+        description: 'Refonte complète du site avec WordPress, Elementor et intégration de la Google Suite pour SEO et marketing digital.',
+        icon: 'fas fa-globe',
         gradient: 'linear-gradient(135deg, #ff0066, #00d4ff)',
-        technologies: ['WordPress', 'Yoast SEO', 'Google Analytics', 'Semrush', 'Elementor', 'Google Search Console'],
-        details: [
-            'Architecture SEO optimisée',
-            'Plus de 150 articles de blog',
-            'Stratégie de contenu long-terme',
-            'Schema markup structuré',
-            'Intégration analytics complet',
-            'Gestion de backlinks',
-            'Optimisation des mots-clés'
-        ],
-        results: [
-            { label: '500K+', desc: 'Visiteurs/mois' },
-            { label: '15', desc: 'Keywords top 1' },
-            { label: '45%', desc: 'Organic traffic' }
-        ]
+        technologies: ['WordPress', 'Elementor', 'JavaScript', 'PHP', 'HTML', 'CSS', 'Google Suite'],
+        details: ['Redesign WordPress avec Elementor', 'Développement JS/PHP/HTML/CSS custom', 'Intégration Google Analytics', 'Configuration Google Ads', 'Optimisation SEO technique', 'Google Search Console', 'Stratégie visibilité digitale'],
+        results: [{ label: '65%', desc: 'Baisse bounce rate' }, { label: '3x', desc: 'Hausse conversions' }, { label: '#1', desc: 'Top Google rank' }]
     },
     6: {
-        title: 'Automatisation & CMS Odoo',
-        description: 'Scripts d\'automatisation avancée pour Odoo, workflows personnalisés, intégration API et administration système complète.',
+        title: 'Gestion CMS Odoo',
+        description: 'Administration et configuration complète de la plateforme Odoo pour la gestion métier de l\'entreprise.',
         icon: 'fas fa-cogs',
-        gradient: 'linear-gradient(135deg, #0066ff, #ff0066)',
-        technologies: ['Odoo', 'Python', 'PostgreSQL', 'REST API', 'RabbitMQ', 'Docker'],
-        details: [
-            'Modules Odoo personnalisés développés',
-            'Automatisation des processus de facturation',
-            'Workflows de gestion documentaire',
-            'Intégrations avec systèmes externes',
-            'Scripts de migration de données',
-            'Rapports personnalisés avancés',
-            'Support technique 24/7'
-        ],
-        results: [
-            { label: '80%', desc: '↓ Temps process' },
-            { label: '50+', desc: 'Workflows' },
-            { label: '99.9%', desc: 'Uptime' }
-        ]
+        gradient: 'linear-gradient(135deg, #ff5733, #0066ff)',
+        technologies: ['Odoo', 'Gestion Métier', 'Administration'],
+        details: ['Plateforme Odoo', 'Configuration système', 'Gestion des données', 'Administration complète', 'Support technique', 'Maintenance régulière', 'Optimisation processus'],
+        results: [{ label: 'Odoo', desc: 'Système principal' }, { label: 'Production', desc: 'Actif' }, { label: '100%', desc: 'Uptime' }]
     }
 };
 
-function openProjectModal(projectId) {
-    const project = projectsData[projectId];
-    if (!project) return;
-
+// Ouvre la modal avec les détails d'un projet spécifique
+function ouvrirModalProjets(idProjet) {
+    const projet = donneeProjets[idProjet];
+    if (!projet) return; // Vérification que le projet existe
+    
     const modal = document.getElementById('projectModal');
     
-    // Set modal content
-    document.getElementById('modalTitle').textContent = project.title;
-    document.getElementById('modalDescription').textContent = project.description;
-    document.getElementById('modalIcon').className = project.icon;
+    // On remplit la modal avec les données du projet
+    document.getElementById('modalTitle').textContent = projet.title;
+    document.getElementById('modalDescription').textContent = projet.description;
+    document.getElementById('modalIcon').className = projet.icon;
+    document.getElementById('modalImageArea').style.background = projet.gradient;
     
-    // Set icon style
-    const iconArea = document.getElementById('modalImageArea');
-    iconArea.style.background = project.gradient;
+    // Technologies en petits badges
+    document.getElementById('modalTechnologies').innerHTML = projet.technologies.map(t => `<span>${t}</span>`).join('');
     
-    // Set technologies
-    const techContainer = document.getElementById('modalTechnologies');
-    techContainer.innerHTML = project.technologies.map(tech => `<span>${tech}</span>`).join('');
+    // Détails en liste
+    document.getElementById('modalDetails').innerHTML = projet.details.map(d => `<li>${d}</li>`).join('');
     
-    // Set details
-    const detailsContainer = document.getElementById('modalDetails');
-    detailsContainer.innerHTML = project.details.map(detail => `<li>${detail}</li>`).join('');
+    // Résultats avec étiquettes et descriptions
+    document.getElementById('modalResults').innerHTML = projet.results.map(r => `<div class="result-item"><strong>${r.label}</strong><p>${r.desc}</p></div>`).join('');
     
-    // Set results
-    const resultsContainer = document.getElementById('modalResults');
-    resultsContainer.innerHTML = project.results.map(result => 
-        `<div class="result-item">
-            <strong>${result.label}</strong>
-            <p>${result.desc}</p>
-        </div>`
-    ).join('');
-    
-    // Show modal with animation
+    // Affiche la modal et empêche le scroll
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
 
-function closeProjectModal() {
+// Ferme la modal des projets et réactive le scroll
+function fermerModalProjets() {
     const modal = document.getElementById('projectModal');
     modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'auto'; // Réactive le scroll
 }
 
-// Add click listeners to project cards (after DOM is loaded)
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.project-card[data-project]').forEach(card => {
-        card.addEventListener('click', function() {
-            const projectId = this.getAttribute('data-project');
-            openProjectModal(projectId);
+// Initialise les interactions des cartes projets (clic pour ouvrir modal)
+function initialiserModalProjets() {
+    // Clic sur une carte projet ouvre les détails
+    document.querySelectorAll('.project-card[data-project]').forEach(carte => {
+        carte.addEventListener('click', function() {
+            ouvrirModalProjets(this.getAttribute('data-project'));
         });
     });
-});
+    
+    // Clic sur le fond de la modal la ferme (évite les clics accidentels à l'intérieur)
+    window.addEventListener('click', (e) => {
+        const modal = document.getElementById('projectModal');
+        if (modal && e.target === modal) fermerModalProjets();
+    });
+    
+    // Touche Echap pour fermer la modal aussi
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') fermerModalProjets();
+    });
+}
 
-// Close modal when clicking outside
-window.addEventListener('click', function(event) {
-    const modal = document.getElementById('projectModal');
-    if (modal && event.target === modal) {
-        closeProjectModal();
+// Gère la soumission du formulaire de contact
+function initialiserFormulaireContact() {
+    const formulaire = document.getElementById('contactForm');
+    if (formulaire) {
+        formulaire.addEventListener('submit', (e) => {
+            e.preventDefault(); // Empêche le rechargement de la page
+            alert('Message reçu! Je te répondrai prochainement. 🎮');
+            formulaire.reset(); // Vide tous les champs
+        });
     }
-});
+}
 
-// Close modal with Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeProjectModal();
-    }
-});
+function initialiserBoutonssCopie() {
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const texte = this.getAttribute('data-copy');
+            navigator.clipboard.writeText(texte).then(() => {
+                const texteOriginal = this.innerHTML;
+                this.classList.add('copied');
+                this.innerHTML = '<i class="fas fa-check"></i> Copié!';
+                setTimeout(() => {
+                    this.classList.remove('copied');
+                    this.innerHTML = texteOriginal;
+                }, 2000);
+            }).catch(err => console.error('Erreur copie:', err));
+        });
+    });
+}
+
